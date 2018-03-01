@@ -2,8 +2,8 @@
 
 ODOOVERSION=9.0
 DEPTH=10
-PATHBASE=~/Developments
-PATHREPOS=~/Developments/addons
+PATHBASE=~/Developments/odoo9
+PATHREPOS=~/Developments/odoo9/addons
 
 
 wk32="https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-i386.deb"
@@ -20,7 +20,7 @@ mkdir $PATHREPOS
 
 # Download Odoo from git source
 cd $PATHBASE
-git clone https://github.com/odoo/odoo.git -b $ODOOVERSION --depth=$DEPTH0
+git clone https://github.com/odoo/odoo.git -b $ODOOVERSION --depth=$DEPTH
 
 # Download repos OCA
 cd $PATHREPOS
@@ -31,13 +31,8 @@ git clone https://github.com/OCA/account-financial-reporting.git -b $ODOOVERSION
 git clone https://github.com/OCA/account-financial-tools.git -b $ODOOVERSION --depth=$DEPTH
 git clone https://github.com/OCA/reporting-engine.git -b $ODOOVERSION --depth=$DEPTH
 git clone https://github.com/OCA/web.git -b $ODOOVERSION --depth=$DEPTH
-#git clone https://github.com/treytux/odoo-product.git --depth=$DEPTH
 git clone https://github.com/OCA/account-invoicing.git -b $ODOOVERSION --depth=$DEPTH
 git clone https://github.com/OCA/account-payment.git -b $ODOOVERSION --depth=$DEPTH
-#git clone https://github.com/treytux/odoo-security.git --depth=$DEPTH
-#git clone https://github.com/odoomrp/odoomrp-wip -b $ODOOVERSION --depth=$DEPTH
-#git clone https://github.com/OCA/pos.git -b $ODOOVERSION --depth=$DEPTH
-#git clone https://github.com/yelizariev/pos-addons.git -b $ODOOVERSION --depth=$DEPTH
 git clone https://github.com/OCA/purchase-workflow.git -b $ODOOVERSION --depth=$DEPTH
 git clone https://github.com/OCA/server-tools.git -b $ODOOVERSION --depth=$DEPTH
 git clone https://github.com/OCA/account-fiscal-rule.git -b $ODOOVERSION --depth=$DEPTH
@@ -53,7 +48,10 @@ git clone https://github.com/OCA/product-attribute.git -b 9.0 --depth=$DEPTH
 git clone https://github.com/OCA/product-variant.git -b 9.0 --depth=$DEPTH 
 git clone https://github.com/OCA/server-tools.git -b 9.0 --depth=$DEPTH
 
-# Install python3 and dependencies for Odoo
+# Install python and dependencies for Odoo
+sudo apt-get install gcc python-dev libxml2-dev libxslt1-dev \
+ libevent-dev libsasl2-dev libldap2-dev libpq-dev \
+ libpng-dev libjpeg-dev 
 sudo apt-get -y install python-pip
 sudo pip install qrcode
 
